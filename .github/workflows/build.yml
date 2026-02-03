@@ -33,7 +33,8 @@ jobs:
       - name: Create native package (macOS)
         if: matrix.os == 'macos-latest'
         run: |
-          jpackage --input target --name FieldNotes --main-jar field-notes-app-1.0-SNAPSHOT.jar --main-class com.fieldnotes.FieldNotesApp --type app-image --dest dist
+          ls -la target/
+          jpackage --input target --name FieldNotes --main-jar field-notes-app-1.0-SNAPSHOT.jar --main-class com.fieldnotes.FieldNotesApp --type app-image --dest dist --mac-sign false || jpackage --input target --name FieldNotes --main-jar field-notes-app-1.0-SNAPSHOT.jar --main-class com.fieldnotes.FieldNotesApp --type app-image --dest dist
           cd dist && zip -r ../FieldNotes-macOS.zip FieldNotes.app
           
       - name: Upload artifact
