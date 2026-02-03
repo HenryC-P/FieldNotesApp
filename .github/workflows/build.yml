@@ -3,6 +3,8 @@ name: Build Native Apps
 on:
   push:
     branches: [main, master]
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 jobs:
