@@ -46,3 +46,9 @@ jobs:
         with:
           name: FieldNotes-${{ matrix.os }}
           path: FieldNotes-*.zip
+          
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: FieldNotes-*.zip
