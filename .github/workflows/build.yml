@@ -22,8 +22,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
           
+      - name: Verify Maven Central access
+        run: curl -I https://repo.maven.apache.org/maven2/com/google/gson/gson/2.10/gson-2.10.pom
+        
       - name: Build with Maven
-        run: mvn clean package -q -B
+        run: mvn clean package -B
         
       - name: Create native package (Windows)
         if: matrix.os == 'windows-latest'
